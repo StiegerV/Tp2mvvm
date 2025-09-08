@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tp2mvvm</string>
+    <string name="buscar">Buscar</string>
+    <string name="el_hobbit">El hobbit..</string>
+    <string name="tags">Tags</string>
+    <string name="descripcion">descripcion</string>
+</resources>
