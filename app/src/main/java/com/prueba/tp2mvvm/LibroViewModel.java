@@ -2,6 +2,7 @@ package com.prueba.tp2mvvm;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -12,7 +13,7 @@ import com.prueba.tp2mvvm.modelo.LibroModel;
 
 public class LibroViewModel extends AndroidViewModel {
 
-    private LiveData<LibroModel> libroMutable;
+    private MutableLiveData<LibroModel> libroMutable;
     public LibroViewModel(@NonNull Application application) {
         super(application);
     }
@@ -26,7 +27,13 @@ public class LibroViewModel extends AndroidViewModel {
     }
 
     public void recuperarMutable(Intent ynt){
-        LibroModel libro =
+        if (libroMutable==null){
+            libroMutable=new MutableLiveData<>();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            LibroModel libro =(LibroModel) ynt.getSerializableExtra("libro",LibroModel.class);
+            libroMutable.setValue(libro);
+        }
     }
 
 }

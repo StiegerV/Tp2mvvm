@@ -41,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
         vm.getLibro().observe(this,libro ->{
             if (libro != null){
                 Intent intent = new Intent(MainActivity.this, LibroActivity.class);
-                intent.putExtra("titulo", libro.getTitulo());
-                intent.putExtra("tags", libro.getAutor());
-                intent.putExtra("descripcion", libro.getDescripcion());
-                intent.putExtra("imagen", libro.getImagen());
+                intent.putExtra("libro", libro);
+
                 startActivity(intent);
             }
         });
